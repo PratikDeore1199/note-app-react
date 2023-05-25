@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
+import NoteGroup from "./components/NoteGroup";
+import CreateNote from "./components/CreateNote";
+import React, { useState } from "react";
 function App() {
+  const [notes, setNotes] = useState([]);
+
+  const addNotes = (newNote) => {
+    setNotes([...notes, newNote]);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className=" m-0 p-0  pb-20">
+      
+        <h1 className="mx-14 mb-7 pt-8">
+          <span className="text-center text-5xl font-extrabold italic text-violet-900">
+            Note App
+          </span>
+        </h1>
+        <CreateNote addNote={addNotes} />
+        <NoteGroup notes={notes} />
+      
     </div>
   );
 }
